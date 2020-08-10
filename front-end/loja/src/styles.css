@@ -1,0 +1,30 @@
+@font-face {
+    font-family: Euclid Circular B;
+    src: url(assets/fonts/EuclidCircularB-Light.otf) format("opentype");
+}
+
+@font-face {
+    font-family: Euclid Circular B Bold;
+    src: url(assets/fonts/EuclidCircularB-Bold.otf) format("opentype");
+}
+
+button {
+    font-family: Euclid Circular B;
+}
+
+input {
+    font-family: Euclid Circular B;
+}
+
+.label-padrao {
+    color: rgba(0, 0, 0, 0.4);
+    font-family: Euclid Circular B;
+}
+
+.font-padrao {
+    font-family: Euclid Circular B;
+}
+
+.img-circle {
+    border-radius: 50%;
+}

@@ -1,0 +1,113 @@
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+    <main>
+        <div class="backgroundAgr conteiner">
+            <div style="padding-top: 25px;"></div>
+            <h1 align="center" class="font-padrao" style="color: black; height: 1000%;">Loja Máxima Tech</h1>
+            <div style="padding-bottom: 25px;"></div>
+        </div>
+        <div style="margin-top: 30px;"></div>
+
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col col-md-4 visible-md-block visible-lg-block padding-top-3" id="div_image_pai">
+                    <div style="margin-left: -150px; max-width: 1000px">
+                        <span class="image object">
+                            <img src="https://i2.wp.com/img.fciencias.com/uploads/2016/08/wallpaper-tecnologia-fciencias-00008.jpg?fit=2090%2C1479&ssl=1"
+                                alt="" height="350" />
+                        </span>
+                    </div>
+                </div> -->
+                <div class="col col-md-4"></div>
+                <div class="col col-md-8">
+                    <div class="visible-md-block visible-lg-block" style="margin-top: 50px;"></div>
+                    <div id="loginbox" class="mainbox">
+                        <div>
+                            <div>
+
+                                <div class="panel-heading">
+                                    <div style="float: right; position: relative; top: 13px; right: -2px">
+                                        <a href="#" title="Recuperar senha"
+                                            style="font-family: Euclid Circular B; color: #5e6265">Esqueceu sua
+                                            senha?</a>
+                                    </div>
+                                </div>
+                                <!-- Login msg -->
+                                <div class="panel-title text-bold" style="float: Left; position: relative; top: +1px">
+                                    <h2 style="color: #5e6265; font-family: Euclid Circular B;">Login</h2>
+                                </div>
+                                <!-- campo login -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="pi pi-user"></i></span>
+                                    </div>
+                                    <input title="Digite seu login" type="text" class="form-control" id="login"
+                                        formControlName="login" placeholder="Login">
+                                    <div class="text-danger"
+                                        *ngIf="loginForm.get('login').invalid && loginForm.get('login').touched">
+                                        <span class="help-block" *ngIf="loginForm.get('login').errors.required">Login é
+                                            inválido</span>
+                                    </div>
+                                </div>
+
+                                <!-- Senha -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="pi pi-lock"></i></span>
+                                    </div>
+                                    <input title="Digite sua senha" type="password" class="form-control" id="password"
+                                        formControlName="password" placeholder="Senha">
+                                    <div class="text-danger"
+                                        *ngIf="loginForm.get('login').invalid && loginForm.get('login').touched">
+                                        <span class="help-block" *ngIf="loginForm.get('login').errors.required">Senha
+                                            inválida</span>
+                                    </div>
+                                </div>
+
+                                <!-- Botão Login -->
+                                <div class="form-group text-right">
+                                    <div class="col-sm-13 controls">
+                                        <button [disabled]="loginForm.invalid" type="submit"
+                                            class="btn btn-secondary"><i class="pi pi-sign-in"> Acessar</i></button>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <div style="padding-bottom: 50px;"></div>
+                                <div class="col-md-12"
+                                    style="float: Left; position: relative; top: +5px; background: #f7f7f7;">
+                                    <div class="row">
+                                        <div class="col-md-4" style="text-align: left;">
+
+                                            <button title="Cadastrar empresa" [routerLink]="['/']" type="button"
+                                                class="btn btn-link" style="color: #5e6265;">
+                                                <i class="pi pi-external-link"></i>
+                                                <b>Cadastre-se</b>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center;">
+
+                                            <button type="button" class="btn btn-link" style="color: #5e6265;"
+                                                [routerLink]="['/']">
+                                                <i class="pi pi-replay"></i>
+                                                <b>Renovar Cadastro</b>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: right;">
+                                            <button type="button" class="btn btn-link" style="color: #5e6265;">
+                                                <i class="pi pi-check"></i>
+                                                <b>Validar Certificado</b>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-bottom: 30px;"></div>
+        </div>
+
+    </main>
+</form>

@@ -1,0 +1,149 @@
+<p id="idTituloPedido">Novo pedido #12345678</p>
+<div class="shadow p-3 mb-5 bg-white rounded">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <form [formGroup]="resourceForm">
+                <label style="font-family: Euclid Circular B Bold; "><i
+                        class="fa fa-user-o"></i>&nbsp;&nbsp;Cliente</label>
+                <p-dropdown [options]="clientes" filter="true" [style]="{'width':'100%'}"
+                    emptyFilterMessage="Nenhum cliente Encontrado" optionLabel="nome" placeholder="Informe um cliente *"
+                    dropdownIcon="pi pi-search" [showClear]="true" formControlName="cliente" resetFilterOnHide="true">
+                </p-dropdown>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="shadow p-3 mb-5 bg-white rounded">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label style="font-family: Euclid Circular B Bold;"><i
+                    class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Carrinho</label>
+            <p-dropdown [options]="produtos" filter="true" [style]="{'width':'100%'}"
+                emptyFilterMessage="Nenhum produto Encontrado" optionLabel="nome" placeholder="Pesquise um produto"
+                dropdownIcon="pi pi-search" [(ngModel)]="produto" (onClick)="selecionarProduto($event)">
+            </p-dropdown>
+        </div>
+    </div>
+    <div class="form-row" *ngIf="contemDetalhes">
+        <div class="form-group col-md-12">
+            <hr>
+            <form [formGroup]="resourceForm">
+                <div formArrayName="detalhePedidos" *ngFor="let obj of detalhePedidosFormArray.controls; let i = index">
+                    <ng-container [formGroupName]="i">
+                        <div class="row row-cols-3">
+                            <div class="col-md-1">
+                                <img class="img-circle"
+                                    [src]="obj.get('produto').value.imagemUrl ? obj.get('produto').value.imagemUrl : 'https://i.pinimg.com/564x/3d/09/ca/3d09cad6a03f0bad68c8e2454af4f87e.jpg'"
+                                    height="100">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="ml-4">
+                                    <div class="row row-cols-1 mt-4 label-padrao">
+                                        {{ obj.get('produto').value.codigo }}
+                                    </div>
+                                    <div class="row row-cols-1">
+                                        <p class="label-descricao-iten">
+                                            <strong>{{ obj.get('produto').value.nome }}</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="row row-cols-3">
+                                    <div class="col-md-10">
+                                        <div class="row row-cols-2 mt-3" align="right">
+                                            <div class="col-md-3" align="right">
+                                                <input id="idInputNumber" type="text" formControlName="quantidade"
+                                                    size="1" maxlength="2" currencyMask
+                                                    [options]="{ prefix: '', align: 'center', precision: '0', allowNegative: false }"
+                                                    (blur)="onBlurQuantidade(i);">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label id="idPrecoUnitario">
+                                                    {{ 'x ' + (obj.get('produto').value.precoUnitario | currency:'BRL') }}</label>
+                                            </div>
+                                        </div>
+                                        <div class="row row-cols-1">
+                                            <div id="idPrecoVariosItens" align="right">
+                                                {{ (obj.value.total) | currency:'BRL' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 mt-4" align="right">
+                                        <i class="fa fa-close" title="Retirar este item" id="idFechar"
+                                            (click)="removerDetalhePedido(i)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <hr>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="form-row" *ngIf="!contemDetalhes">
+        <div class="form-group col-md-12" align="center">
+            <img src="assets/images/imagem-carrinho-empty-state.png" height="218">
+            <br><br>
+            <p style="font-family: Euclid Circular B Bold; font-size: 36px; color: rgba(0, 0, 0, 0.4);">Carrinho
+                Vazio
+            </p>
+            <p class="label-padrao">Nenhum produto foi inserido</p>
+        </div>
+    </div>
+</div>
+<div class="shadow p-3 mb-5 bg-white rounded">
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label style="font-family: Euclid Circular B Bold; "><i
+                    class="fa fa-calculator"></i>&nbsp;&nbsp;Total</label>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <div class="row">
+                <div class="col-md-6" align="left">
+                    <p class="label-padrao">Itens</p>
+                </div>
+                <div class="col-md-6" align="right">
+                    <p class="font-padrao">{{ (resourceForm.value.itensValorTotal) | currency:'BRL' }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" align="left">
+                    <p class="label-padrao">Frete</p>
+                </div>
+                <div class="col-md-6" align="right">
+                    <p class="font-padrao">{{ (resourceForm.value.frete) | currency:'BRL' }}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6" align="left">
+                    <p class="label-padrao">Total</p>
+                </div>
+                <div class="col-md-6" align="right">
+                    <p class="font-padrao">
+                        {{ (resourceForm.value.itensValorTotal + resourceForm.value.frete) | currency:'BRL' }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-success btn-lg btn-block" (click)="submitForm()">Finalizar
+                        pedido</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-outline-dark btn-lg btn-block" (click)="limpar()">Limpar
+                        carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-toast [style]="{marginTop: '80px'}"></p-toast>

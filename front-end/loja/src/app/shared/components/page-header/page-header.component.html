@@ -1,0 +1,11 @@
+<div class="row mb-4">
+    <div class="col-md-9">
+        <h3 class="text-themecolor border-left pl-2" style="font-family: Euclid Circular B Bold; color: pur">
+            {{ pageTitle }}
+        </h3>
+    </div>
+    <div *ngIf="showButton" class="col-md-3 text-right" style="font-size: 0.8rem; font-family: Euclid Circular B;">
+        <a [routerLink]="buttonLink" class="btn btn-secondary" [ngClass]="buttonClass" [title]="buttonText">
+            <i [ngClass]="iconClass"></i>{{ buttonText }} </a>
+    </div>
+</div>

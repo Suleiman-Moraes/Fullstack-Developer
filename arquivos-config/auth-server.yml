@@ -1,0 +1,30 @@
+server:
+  port: 9092
+
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: ${EUREKA_URI:http://localhost:9091/eureka}
+  instance: 
+    preferIpAddress: true
+
+security:
+    jwt:
+        token:
+            secret-key: 12345
+            expire-length: 28800000
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/loja
+        username: postgres
+        password: 123456
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+        generate-ddl: false
+        hibernate:
+            ddl-auto: none
+        show-sql: true
+
+show:
+    swagger: true

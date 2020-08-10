@@ -1,0 +1,7 @@
+<form [formGroup]="resourceForm">
+    <label class="titleLabel" style="font-family: Euclid Circular B Bold;"
+        [for]="forName">&nbsp;&nbsp;{{ nome }}</label>
+    <input [placeholder]="nome" [title]="nome" type="text" class="form-control" [id]="forName"
+        [formControlName]="forName" style="font-family: Euclid Circular B;">
+    <app-form-field-error [form-control]="resourceForm.get(forName)"></app-form-field-error>
+</form>

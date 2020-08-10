@@ -1,0 +1,34 @@
+server: 
+  port: 6060 
+ 
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: ${EUREKA_URI:http://localhost:9091/eureka}
+    registerWithEureka: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5
+  instance: 
+    preferIpAddress: true
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/loja
+        username: postgres
+        password: 123456
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+        generate-ddl: false
+        hibernate:
+            ddl-auto: validate
+        show-sql: false
+
+authserver:
+  hostname: http://localhost:9092
+security:
+  oauth2:
+    resource:
+      userInfoUri: ${authserver.hostname}/user
+      id: portal-server
+show:
+    swagger: true

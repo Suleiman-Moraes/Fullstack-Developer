@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: api-gateway-service
+  cloud:
+    config:
+      uri: http://localhost:9090/
+      
+zuul:
+  ignoredServices: '*'
+  prefix: /api
+  routes:
+    loja-service:
+      path: /loja/**
+      sensitiveHeaders: null
+      url: http://localhost:6060
+    calculo-frete-service:
+      path: /calculofrete/**
+      sensitiveHeaders: null
+      url: http://localhost:6063
+    auth-service:
+      path: /auth/**
+      sensitiveHeaders: null
+      url: http://localhost:9092
+  host:
+    socketTimeoutMillis: 30000000

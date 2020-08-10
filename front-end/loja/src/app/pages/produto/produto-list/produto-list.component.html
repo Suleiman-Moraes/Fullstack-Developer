@@ -1,0 +1,52 @@
+<app-page-header page-title="Produtos" button-text=" Novo Produto" button-link="new" icon-lass="pi pi-plus"
+    button-class="text-center"></app-page-header>
+
+<div class="table-responsive-lg font-padrao" style="background: white;">
+    <table class="table table-hover table-striped" style="font-size: 0.8rem;">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Imagem</th>
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">Código</th>
+                <th scope="col" class="text-center">Preço unitário</th>
+                <th scope="col" class="text-center">Ações </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of paginas.content">
+                <td class="text-center">
+                    <img class="img-circle"
+                        [src]="obj.imagemUrl ? obj.imagemUrl : 'https://i.pinimg.com/564x/3d/09/ca/3d09cad6a03f0bad68c8e2454af4f87e.jpg'"
+                        height="50">
+                </td>
+                <td class="text-center">
+                    {{ obj.nome }}
+                </td>
+                <td class="text-center">
+                    {{ obj.nome }}
+                </td>
+                <td class="text-center">
+                    {{ obj.codigo }}
+                </td>
+                <td class="text-center">
+                    {{ obj.precoUnitario | currency:'BRL' }}
+                </td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-secondary btn-sm" [routerLink]="[obj.id, 'edit']">
+                        Editar</button>
+                </td>
+            </tr>
+            <tr *ngIf="paginas.totalElements <= 0 || paginas == ''">
+                <td colspan="6">
+                    <strong>Nenhum Registro Encontrado</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p-paginator [rows]="count" [style]="{'background-color': 'white', 'border': '1px solid white'}"
+    [totalRecords]="paginas.totalElements" [rowsPerPageOptions]="[5, 10, 20, 30, 50, 100]"
+    (onPageChange)="paginate($event)"></p-paginator>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>

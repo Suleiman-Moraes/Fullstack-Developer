@@ -1,0 +1,59 @@
+#idTituloPedido {
+    font-family: Euclid Circular B Bold;
+    font-size: 26px;
+    line-height: 24px;
+    color: #000000;
+}
+
+#idDivTitulo {
+    /* Email address */
+    position: absolute;
+    left: 2.23%;
+    right: -7.82%;
+    top: 0%;
+    bottom: 0%;
+    font-family: Euclid Circular B;
+    font-size: 22.75px;
+    line-height: 24px;
+    /* or 105% */
+    display: flex;
+    align-items: flex-end;
+    color: #373A3C;
+}
+
+.label-descricao-iten {
+    font-family: Euclid Circular B;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+#idPrecoUnitario {
+    font-family: Euclid Circular B;
+    font-size: 16px;
+    line-height: 30px;
+    /* display: flex; */
+    align-items: flex-end;
+    /* text-align: right; */
+    color: #373A3C;
+}
+
+#idInputNumber {
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+#idPrecoVariosItens {
+    font-family: Euclid Circular B;
+    font-size: 20px;
+    /* line-height: 30px; */
+    /* display: flex; */
+    align-items: flex-end;
+    /* text-align: right; */
+}
+
+#idFechar {
+    cursor: pointer;
+}
